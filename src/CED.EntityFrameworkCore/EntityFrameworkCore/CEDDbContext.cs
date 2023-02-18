@@ -4,6 +4,7 @@ using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.Identity;
 using Volo.Abp.Identity.EntityFrameworkCore;
@@ -12,22 +13,28 @@ using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
-
+using CED.ClassInformations;
 namespace CED.EntityFrameworkCore;
 
 [ReplaceDbContext(typeof(IIdentityDbContext))]
 [ReplaceDbContext(typeof(ITenantManagementDbContext))]
 [ConnectionStringName("Default")]
 public class CEDDbContext :
-    AbpDbContext<CEDDbContext>,
-    IIdentityDbContext,
-    ITenantManagementDbContext
+	AbpDbContext<CEDDbContext>,
+	IIdentityDbContext,
+	ITenantManagementDbContext
 {
-    /* Add DbSet properties for your Aggregate Roots / Entities here. */
+	/* Add DbSet properties for your Aggregate Roots / Entities here. */
+	// ClassInformation Management
 
-    #region Entities from the modules
+	public DbSet<ClassInformation> ClassInformations { get; set; }
+	public DbSet<Subject> Subjects { get; set; }
+	public DbSet<AvailableDate> AvailableDates { get; set; }
 
-    /* Notice: We only implemented IIdentityDbContext and ITenantManagementDbContext
+
+	#region Entities from the modules
+
+	/* Notice: We only implemented IIdentityDbContext and ITenantManagementDbContext
      * and replaced them for this DbContext. This allows you to perform JOIN
      * queries for the entities of these modules over the repositories easily. You
      * typically don't need that for other modules. But, if you need, you can
@@ -38,48 +45,71 @@ public class CEDDbContext :
      * uses this DbContext on runtime. Otherwise, it will use its own DbContext class.
      */
 
-    //Identity
-    public DbSet<IdentityUser> Users { get; set; }
-    public DbSet<IdentityRole> Roles { get; set; }
-    public DbSet<IdentityClaimType> ClaimTypes { get; set; }
-    public DbSet<OrganizationUnit> OrganizationUnits { get; set; }
-    public DbSet<IdentitySecurityLog> SecurityLogs { get; set; }
-    public DbSet<IdentityLinkUser> LinkUsers { get; set; }
+	//Identity
+	public DbSet<IdentityUser> Users { get; set; }
+	public DbSet<IdentityRole> Roles { get; set; }
+	public DbSet<IdentityClaimType> ClaimTypes { get; set; }
+	public DbSet<OrganizationUnit> OrganizationUnits { get; set; }
+	public DbSet<IdentitySecurityLog> SecurityLogs { get; set; }
+	public DbSet<IdentityLinkUser> LinkUsers { get; set; }
 
-    // Tenant Management
-    public DbSet<Tenant> Tenants { get; set; }
-    public DbSet<TenantConnectionString> TenantConnectionStrings { get; set; }
+	// Tenant Management
+	public DbSet<Tenant> Tenants { get; set; }
+	public DbSet<TenantConnectionString> TenantConnectionStrings { get; set; }
 
-    #endregion
+	#endregion
 
-    public CEDDbContext(DbContextOptions<CEDDbContext> options)
-        : base(options)
-    {
+	public CEDDbContext(DbContextOptions<CEDDbContext> options)
+		: base(options)
+	{
 
-    }
+	}
 
-    protected override void OnModelCreating(ModelBuilder builder)
-    {
-        base.OnModelCreating(builder);
+	protected override void OnModelCreating(ModelBuilder builder)
+	{
+		base.OnModelCreating(builder);
 
-        /* Include modules to your migration db context */
+		/* Include modules to your migration db context */
 
-        builder.ConfigurePermissionManagement();
-        builder.ConfigureSettingManagement();
-        builder.ConfigureBackgroundJobs();
-        builder.ConfigureAuditLogging();
-        builder.ConfigureIdentity();
-        builder.ConfigureOpenIddict();
-        builder.ConfigureFeatureManagement();
-        builder.ConfigureTenantManagement();
+		builder.ConfigurePermissionManagement();
+		builder.ConfigureSettingManagement();
+		builder.ConfigureBackgroundJobs();
+		builder.ConfigureAuditLogging();
+		builder.ConfigureIdentity();
+		builder.ConfigureOpenIddict();
+		builder.ConfigureFeatureManagement();
+		builder.ConfigureTenantManagement();
 
-        /* Configure your own tables/entities inside here */
+		/* Configure your own tables/entities inside here */
 
-        //builder.Entity<YourEntity>(b =>
-        //{
-        //    b.ToTable(CEDConsts.DbTablePrefix + "YourEntities", CEDConsts.DbSchema);
-        //    b.ConfigureByConvention(); //auto configure for the base class props
-        //    //...
-        //});
-    }
+		//builder.Entity<YourEntity>(b =>
+		//{
+		//    b.ToTable(CEDConsts.DbTablePrefix + "YourEntities", CEDConsts.DbSchema);
+		//    b.ConfigureByConvention(); //auto configure for the base class props
+		//    //...
+		//});
+
+		builder.Entity<ClassInformation>(b =>
+		{
+			b.ToTable(CEDConsts.DbTablePrefix + "ClassInformations", CEDConsts.DbSchema);
+			b.ConfigureByConvention(); //auto configure for the base class props
+			b.Property(x => x.Title).IsRequired().HasMaxLength(128).IsUnicode(true);
+			b.Property(x => x.Description).IsRequired().IsUnicode(true);
+			b.Property(x => x.Address).IsRequired().IsUnicode(true); //...
+		});
+
+		builder.Entity<Subject>(b =>
+		{
+			b.ToTable(CEDConsts.DbTablePrefix + "Subjects", CEDConsts.DbSchema);
+			b.ConfigureByConvention(); //auto configure for the base class props
+			b.Property(x => x.Name).IsRequired().HasMaxLength(128).IsUnicode(true);
+		});
+
+		builder.Entity<AvailableDate>(b =>
+		{
+			b.ToTable(CEDConsts.DbTablePrefix + "AvailableDates", CEDConsts.DbSchema);
+			b.ConfigureByConvention(); //auto configure for the base class props
+
+		});
+	}
 }

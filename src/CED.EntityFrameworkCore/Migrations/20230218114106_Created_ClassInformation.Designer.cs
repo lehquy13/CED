@@ -4,6 +4,7 @@ using CED.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
@@ -12,9 +13,11 @@ using Volo.Abp.EntityFrameworkCore;
 namespace CED.Migrations
 {
     [DbContext(typeof(CEDDbContext))]
-    partial class CEDDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230218114106_Created_ClassInformation")]
+    partial class CreatedClassInformation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,7 +74,7 @@ namespace CED.Migrations
 
                     b.HasIndex("ClassInformationId");
 
-                    b.ToTable("AppAvailableDates", (string)null);
+                    b.ToTable("AvailableDates");
                 });
 
             modelBuilder.Entity("CED.ClassInformations.ClassInformation", b =>
@@ -193,14 +196,11 @@ namespace CED.Migrations
                         .HasColumnName("LastModifierId");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(128)
-                        .IsUnicode(true)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("AppSubjects", (string)null);
+                    b.ToTable("Subjects");
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
