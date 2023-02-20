@@ -1,0 +1,133 @@
+﻿@page
+@model CED.Web.Pages.ClassInformations.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ClassInformation</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassInformation.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassInformation.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassInformation.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassInformation.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassInformation.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassInformation.Status)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassInformation.LearningFormality)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassInformation.LearningFormality)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassInformation.Fee)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassInformation.Fee)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassInformation.ChargeFee)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassInformation.ChargeFee)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassInformation.GenderRequirement)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassInformation.GenderRequirement)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassInformation.AcademicLevel)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassInformation.AcademicLevel)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassInformation.StudentGender)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassInformation.StudentGender)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassInformation.NumberOfStudent)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassInformation.NumberOfStudent)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassInformation.MinutePerSession)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassInformation.MinutePerSession)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassInformation.SessionPerWeek)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassInformation.SessionPerWeek)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassInformation.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassInformation.Address)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassInformation.LastModificationTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassInformation.LastModificationTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassInformation.LastModifierId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassInformation.LastModifierId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassInformation.CreationTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassInformation.CreationTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassInformation.CreatorId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassInformation.CreatorId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassInformation.ExtraProperties)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassInformation.ExtraProperties)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassInformation.ConcurrencyStamp)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClassInformation.ConcurrencyStamp)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.ClassInformation?.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

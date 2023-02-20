@@ -1,0 +1,129 @@
+﻿@page
+@model CED.Web.Pages.ClassInformations.CreateModel
+
+@{
+
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create new class</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ClassInformation.Title" class="control-label"></label>
+                <input asp-for="ClassInformation.Title" class="form-control" />
+                <span asp-validation-for="ClassInformation.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClassInformation.Description" class="control-label"></label>
+                <input asp-for="ClassInformation.Description" class="form-control" />
+                <span asp-validation-for="ClassInformation.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClassInformation.Status" class="control-label"></label>
+                <select asp-for="ClassInformation.Status"  class="form-control"></select>
+                <span asp-validation-for="ClassInformation.Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClassInformation.LearningFormality" class="control-label"></label>
+                <select asp-for="ClassInformation.LearningFormality" class="form-control"></select>
+                <span asp-validation-for="ClassInformation.LearningFormality" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClassInformation.Fee" class="control-label"></label>
+                <input asp-for="ClassInformation.Fee" type="number" min="1" step="any" class="form-control" />
+                <span asp-validation-for="ClassInformation.Fee" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClassInformation.ChargeFee" class="control-label"></label>
+                <input asp-for="ClassInformation.ChargeFee" type="number" min="0" value="0" step="5" max="100" class="form-control" />
+                <span asp-validation-for="ClassInformation.ChargeFee" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClassInformation.GenderRequirement" class="control-label"></label>
+                <select asp-for="ClassInformation.GenderRequirement" class="form-control"></select>
+                <span asp-validation-for="ClassInformation.GenderRequirement" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClassInformation.AcademicLevel" class="control-label"></label>
+                <select asp-for="ClassInformation.AcademicLevel" class="form-control"></select>
+                <span asp-validation-for="ClassInformation.AcademicLevel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClassInformation.StudentGender" class="control-label"></label>
+                <select asp-for="ClassInformation.StudentGender" class="form-control"></select>
+                <span asp-validation-for="ClassInformation.StudentGender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClassInformation.NumberOfStudent" class="control-label"></label>
+                <input asp-for="ClassInformation.NumberOfStudent" class="form-control" />
+                <span asp-validation-for="ClassInformation.NumberOfStudent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClassInformation.MinutePerSession" class="control-label"></label>
+                <input asp-for="ClassInformation.MinutePerSession" class="form-control" />
+                <span asp-validation-for="ClassInformation.MinutePerSession" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClassInformation.SessionPerWeek" class="control-label"></label>
+                <input asp-for="ClassInformation.SessionPerWeek" type="number" min="1" step="1" max="7" class="form-control" />
+                <span asp-validation-for="ClassInformation.SessionPerWeek" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClassInformation.Address" class="control-label"></label>
+                <input asp-for="ClassInformation.Address" class="form-control" />
+                <span asp-validation-for="ClassInformation.Address" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+            <label asp-for="ClassInformation.LastModificationTime" class="control-label"></label>
+            <input asp-for="ClassInformation.LastModificationTime" class="form-control" />
+            <span asp-validation-for="ClassInformation.LastModificationTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+            <label asp-for="ClassInformation.LastModifierId" class="control-label"></label>
+            <input asp-for="ClassInformation.LastModifierId" class="form-control" />
+            <span asp-validation-for="ClassInformation.LastModifierId" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="ClassInformation.CreationTime" class="control-label"></label>
+                <input asp-for="ClassInformation.CreationTime" type="datetime-local" value="@DateTime.Now.ToString("s")" class="form-control" />
+                <span asp-validation-for="ClassInformation.CreationTime" class="text-danger"></span>
+            </div>
+
+            @*<div class="form-group">
+            <label asp-for="ClassInformation.CreatorId" class="control-label"></label>
+            <input asp-for="ClassInformation.CreatorId" class="form-control" />
+            <span asp-validation-for="ClassInformation.CreatorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+            <label asp-for="ClassInformation.ExtraProperties" class="control-label"></label>
+            <input asp-for="ClassInformation.ExtraProperties" class="form-control" />
+            <span asp-validation-for="ClassInformation.ExtraProperties" class="text-danger"></span>
+            </div>*@
+
+            <div class="form-group">
+                <label asp-for="ClassInformation.Id" class="control-label"></label>
+                <input asp-for="ClassInformation.Id" value="@Guid.NewGuid()" class="form-control" />
+                <span asp-validation-for="ClassInformation.Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
