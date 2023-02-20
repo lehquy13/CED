@@ -9,6 +9,7 @@ public class CEDWebAutoMapperProfile : Profile
     {
         //Define your AutoMapper configuration here for the Web project.
         CreateMap<SubjectDto, CreateUpdateSubjectDto>();
+        CreateMap<ClassInformationDto, CreateUpdateClassInformationDto>();
 
     }
 }

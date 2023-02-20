@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Volo.Abp.Application.Dtos;
+using Volo.Abp.MultiTenancy;
 
 namespace CED.ClassInformations
 {
-	public class CreateUpdateClassInformationDto : AuditedEntityDto<Guid>
+	public class CreateUpdateClassInformationDto 
 	{
 		[Required]
 		[StringLength(128)]
@@ -15,10 +16,10 @@ namespace CED.ClassInformations
 		public string Description { get; set; }
 
 		[Required]
-		public Status Status { get; set; }
+		public Status Status { get; set; } = Status.Waiting;
 
 		[Required]
-		public LearningMode LearningFormality { get; set; }
+		public LearningMode LearningFormality { get; set; } = LearningMode.Offline;
 
 		[Required]
 		public float Fee { get; set; }
@@ -27,13 +28,13 @@ namespace CED.ClassInformations
 
 		//Tutor related information
 		[Required]
-		public GenderRequirement GenderRequirement { get; set; }
+		public GenderRequirement GenderRequirement { get; set; } = GenderRequirement.None;
 		[Required]
-		public AcademicLevel AcademicLevel { get; set; }
+		public AcademicLevel AcademicLevel { get; set; } = AcademicLevel.Optional;
 
 		//Student related information
 		[Required]
-		public Gender StudentGender { get; set; }
+		public Gender StudentGender { get; set; } = Gender.Male;
 		[Required]
 		public int NumberOfStudent { get; set; }
 
@@ -42,15 +43,16 @@ namespace CED.ClassInformations
 		public int MinutePerSession { get; set; }
 		[Required]
 		public int SessionPerWeek { get; set; }
-		[Required]
-		public List<AvailableDateDto> AvailableDates { get; set; }
+
+        //[Required]
+        //public List<AvailableDateDto> AvailableDates { get; set; }
 
 		// Address related information
 		[Required]
 		public string Address { get; set; }
 
 		//Subject related information
-		[Required]
-		public SubjectDto Subject { get; set; }
+		//[Required]
+		//public SubjectDto Subject { get; set; }
 	}
 }

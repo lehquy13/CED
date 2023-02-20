@@ -1,5 +1,9 @@
-﻿$(function () {
+﻿
+$(function () {
     var l = abp.localization.getResource('CED');
+    var createModal = new abp.ModalManager(abp.appPath + 'ClassInformations/CreateModal');
+   var editModal = new abp.ModalManager(abp.appPath + 'ClassInformations/EditModal');
+   
 
     var dataTable = $('#ClassesTable').DataTable(
         abp.libs.datatables.normalizeConfiguration({
@@ -11,44 +15,78 @@
             ajax: abp.libs.datatables.createAjax(cED.classInformations.classInformation.getList),
             columnDefs: [
                 {
+                    title: l('Actions'),
+                    rowAction: {
+                        items:
+                            [
+                                {
+                                    text: l('Edit'),
+                                    action: function (data) {
+                                        //editModal.open({ id: data.record.id });
+                                        window.location.href = '/ClassInformations/EditModal?id=' + data.record.id;
+                                    }
+                                },
+                                {
+                                    text: l('Delete'),
+                                    confirmMessage: function (data) {
+                                        return l(
+                                            'ClassDeletionConfirmationMessage',
+                                            data.record.name
+                                        );
+                                    },
+                                    action: function (data) {
+                                        cED.classInformations.classInformation
+                                            .delete(data.record.id)
+                                            .then(function () {
+                                                abp.notify.info(
+                                                    l('SuccessfullyDeleted')
+                                                );
+                                                dataTable.ajax.reload();
+                                            });
+                                    }
+                                }
+                            ]
+                    }
+                },
+                {
                     title: l('Title'),
-                    data: "Title"
+                    data: "title"
                 },
                 {
                     title: l('Status'),
-                    data: "Status"
+                    data: "status"
                 },
                 {
                     title: l('LearningFormality'),
-                    data: "LearningFormality"
+                    data: "learningFormality"
                 },
                 {
                     title: l('Fee'),
-                    data: "Fee"
+                    data: "fee"
                 },
                 {
                     title: l('ChargeFee'),
-                    data: "ChargeFee"
+                    data: "chargeFee"
                 },
                 {
                     title: l('AcademicLevel'),
-                    data: "AcademicLevel"
+                    data: "academicLevel"
                 },
                 {
                     title: l('NumberOfStudent'),
-                    data: "NumberOfStudent"
+                    data: "numberOfStudent"
                 },
                 {
                     title: l('MinutePerSession'),
-                    data: "MinutePerSession"
+                    data: "minutePerSession"
                 },
                 {
                     title: l('SessionPerWeek'),
-                    data: "SessionPerWeek"
+                    data: "sessionPerWeek"
                 },
                 {
                     title: l('Subject'),
-                    data: "Subject"
+                    data: "subject"
                 },
                 //{
                 //    title: l('Type'),
@@ -82,17 +120,34 @@
             ]
         })
     );
+
+    createModal.onResult(function () {
+        dataTable.ajax.reload();
+    });
+    $('#CreateEditButtonSubmit').click(function () {
+        dataTable.ajax.reload();
+    });
+
+    $('#NewClassButton').click(function (e) {
+        e.preventDefault();
+        //createModal.open();
+        window.location.href = '/ClassInformations/CreateModal/';
+    });
 });
 
-//var createModal = new abp.ModalManager(abp.appPath + 'Books/CreateModal');
-var createModal = new abp.ModalManager(abp.appPath + 'ClassInformations/Create');
 
-createModal.onResult(function () {
-    dataTable.ajax.reload();
-});
-
-$('#NewClassButton').click(function (e) {
-    e.preventDefault();
-    //createModal.open();
-    window.location.href = '/ClassInformations/Create/';
-});
+function CreateUpdateClassInformationFormSubmited(form) {
+    var formdata = new FormData(form);
+    abp.ajax({
+        type: 'POST',
+        processData: false,
+        contentType: false,
+        data: formdata,
+        url: form.action
+    }).then(function () {
+        debugger;
+        window.location.href = '/ClassInformations';
+    });
+    return false;
+    
+}

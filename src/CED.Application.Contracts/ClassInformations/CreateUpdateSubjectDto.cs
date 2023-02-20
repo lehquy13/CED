@@ -5,7 +5,7 @@ using Volo.Abp.Application.Dtos;
 
 namespace CED.ClassInformations
 {
-	public class CreateUpdateSubjectDto : AuditedEntityDto<Guid>
+	public class CreateUpdateSubjectDto 
 	{
 		public string Name { get; set; }
 	}

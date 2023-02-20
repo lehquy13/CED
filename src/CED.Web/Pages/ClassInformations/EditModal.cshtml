@@ -1,0 +1,25 @@
+﻿@page
+@using Microsoft.Extensions.Localization
+@using CED.Localization
+@model CED.Web.Pages.ClassInformations.EditModalModel
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@inject IStringLocalizer<CEDResource> L
+@{
+    ViewData["Title"] = "Edit";
+}
+
+@section scripts
+{
+    <abp-script src="/Pages/ClassInformations/Index.js" />
+}
+
+<abp-dynamic-form abp-model="ClassInformation" asp-page="/ClassInformations/EditModal" onsubmit="return CreateUpdateClassInformationFormSubmited(this);">
+    <abp-card>
+        <abp-card-header title="@L["Update"].Value"></abp-card-header>
+        <abp-card-body>
+            <abp-input asp-for="Id" />
+            <abp-form-content />
+        </abp-card-body>
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-card>
+</abp-dynamic-form>
