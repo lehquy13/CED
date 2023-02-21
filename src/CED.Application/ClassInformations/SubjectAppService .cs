@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CED.Permissions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,11 @@ namespace CED.ClassInformations
 		public SubjectAppService(IRepository<Subject, Guid> repository) 
 			: base(repository)
 		{
-		}
+            GetPolicyName = CEDPermissions.Subject.Default;
+            GetListPolicyName = CEDPermissions.Subject.Default;
+            CreatePolicyName = CEDPermissions.Subject.Create;
+            UpdatePolicyName = CEDPermissions.Subject.Edit;
+            DeletePolicyName = CEDPermissions.Subject.Delete;
+        }
 	}
 }

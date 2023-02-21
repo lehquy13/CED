@@ -21,6 +21,7 @@ $(function () {
                             [
                                 {
                                     text: l('Edit'),
+                                    visible: abp.auth.isGranted('CED.ClassInformations.Edit'),
                                     action: function (data) {
                                         //editModal.open({ id: data.record.id });
                                         window.location.href = '/ClassInformations/EditModal?id=' + data.record.id;
@@ -28,6 +29,7 @@ $(function () {
                                 },
                                 {
                                     text: l('Delete'),
+                                    visible: abp.auth.isGranted('CED.ClassInformations.Delete'),
                                     confirmMessage: function (data) {
                                         return l(
                                             'ClassDeletionConfirmationMessage',

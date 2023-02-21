@@ -1,31 +1,38 @@
 ﻿@page
 @using CED.Localization
 @using Microsoft.Extensions.Localization
+@using Microsoft.AspNetCore.Authorization
+@using CED.Permissions
+
 @model CED.Web.Pages.ClassInformations.IndexModel
 
 @{
     ViewData["Title"] = "Index";
 }
 @inject IStringLocalizer<CEDResource> L
+@inject IAuthorizationService AuthorizationService
 @section scripts
-{
+    {
     <abp-script src="/Pages/ClassInformations/Index.js" />
 }
 
 <abp-card>
     <abp-card-header>
         <abp-row>
-        <abp-column size-md="_6">
-            <abp-card-title>@L["Classes"]</abp-card-title>
-        </abp-column>
-        <abp-column size-md="_6" class="text-end">
-            <abp-button id="NewClassButton"
-                        text="@L["NewClass"].Value"
-                        icon="plus"
-                        button-type="Primary"/> 
-                    
-        </abp-column>
-    </abp-row>
+            <abp-column size-md="_6">
+                <abp-card-title>@L["Classes"]</abp-card-title>
+            </abp-column>
+            <abp-column size-md="_6" class="text-end">
+                
+                @if (await AuthorizationService.IsGrantedAsync(CEDPermissions.ClassInformation.Create))
+                {
+                    <abp-button id="NewClassButton"
+                            text="@L["NewClass"].Value"
+                            icon="plus"
+                            button-type="Primary" />
+                }
+            </abp-column>
+        </abp-row>
     </abp-card-header>
     <abp-card-body>
         <abp-table striped-rows="true" id="ClassesTable"></abp-table>

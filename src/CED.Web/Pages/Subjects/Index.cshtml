@@ -1,14 +1,20 @@
 ﻿@page
 @model CED.Web.Pages.Subjects.IndexModel
-
+@using Microsoft.AspNetCore.Authorization
+@using CED.Permissions
 @{
     ViewData["Title"] = "Index";
 }
+@inject IAuthorizationService AuthorizationService
+
 
 <h1>Index</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    @if (await AuthorizationService.IsGrantedAsync(CEDPermissions.Subject.Create))
+    {
+        <a asp-page="Create">Create New</a>
+    }
 </p>
 <table class="table">
     <thead>
@@ -38,35 +44,36 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Subject) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastModificationTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastModifierId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreationTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatorId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExtraProperties)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ConcurrencyStamp)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Subject)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastModificationTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastModifierId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreationTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatorId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExtraProperties)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ConcurrencyStamp)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

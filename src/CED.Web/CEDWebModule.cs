@@ -37,6 +37,8 @@ using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.UI;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using CED.Permissions;
 
 namespace CED.Web;
 
@@ -93,6 +95,18 @@ public class CEDWebModule : AbpModule
         ConfigureNavigationServices();
         ConfigureAutoApiControllers();
         ConfigureSwaggerServices(context.Services);
+
+        Configure<RazorPagesOptions>(options =>
+        {
+            //Class informations
+            options.Conventions.AuthorizePage("/ClassInformations/Index", CEDPermissions.ClassInformation.Default);
+            options.Conventions.AuthorizePage("/ClassInformations/CreateModal", CEDPermissions.ClassInformation.Create);
+            options.Conventions.AuthorizePage("/ClassInformations/EditModal", CEDPermissions.ClassInformation.Edit);
+            //Subjects
+            options.Conventions.AuthorizePage("/Subjects/Index", CEDPermissions.Subject.Default);
+            options.Conventions.AuthorizePage("/Subjects/CreateModal", CEDPermissions.Subject.Create);
+            options.Conventions.AuthorizePage("/Subjects/EditModal", CEDPermissions.Subject.Edit);
+        });
     }
 
     private void ConfigureAuthentication(ServiceConfigurationContext context)
