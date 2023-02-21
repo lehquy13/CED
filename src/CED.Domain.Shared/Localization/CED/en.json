@@ -2,7 +2,36 @@
   "culture": "en",
   "texts": {
     "Menu:Home": "Home",
+    "Menu:Classes": "Classes",
+    "Menu:ClassInformations": "Classes' Informations",
+    "Enum:Gender.0": "Male",
+    "Enum:Gender.1": "Female",
+    "Enum:Gender.2": "Other",
+    "Enum:GenderRequirement.0": "Male",
+    "Enum:GenderRequirement.1": "Female",
+    "Enum:GenderRequirement.2": "None",
+    "Enum:LearningMode.0": "Online",
+    "Enum:LearningMode.1": "Offline",
+    "Enum:LearningMode.2": "Hybrid",
+    "Enum:AcademicLevel.0": "Student",
+    "Enum:AcademicLevel.1": "Teacher / Lecturer",
+    "Enum:AcademicLevel.2": "Optional",
+    "Enum:Status.0": "Waiting",
+    "Enum:Status.1": "Confirmed",
+    "Enum:Status.2": "Canceled",
+    "LearningMode": "Learning Mode",
+    "ChargeFee": "Charge Fee",
+    "AcademicLevel": "Academic Level",
+    "NumberOfStudent": "Number Of Student",
+    "MinutePerSession": "Minute/Session",
+    "SessionPerWeek": "Session/Week",
+
+    "Menu:Subjects": "Subjects",
+
     "Welcome": "Welcome",
-    "LongWelcomeMessage": "Welcome to the application. This is a startup project based on the ABP framework. For more information, visit abp.io."
+    "LongWelcomeMessage": "Welcome to the application. This is a startup project based on the ABP framework. For more information, visit abp.io.",
+    "CreationTime": "Creation time",
+    "AreYouSure": "Are you sure?",
+    "AreYouSureToDelete": "Are you sure you want to delete this item?"
   }
 }

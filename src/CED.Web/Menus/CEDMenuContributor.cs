@@ -38,12 +38,12 @@ public class CEDMenuContributor : IMenuContributor
 			1,
 			new ApplicationMenuItem(
 				CEDMenus.ClassInformation,				
-				l["ClassInformations"],
+				l["Menu:ClassInformations"],
 				icon: "bi bi-activity"
 			).AddItem(
 				new ApplicationMenuItem(
 				CEDMenus.Classes,
-				l["Classes"],
+				l["Menu:Classes"],
 				url: "/ClassInformations",
 				icon: "bi bi-journal-text"
 
@@ -54,7 +54,7 @@ public class CEDMenuContributor : IMenuContributor
             2,
             new ApplicationMenuItem(
                 CEDMenus.Subjects,
-                l["Subjects"],
+                l["Menu:Subjects"],
                 icon: "bi bi-book",
                 url: "/Subjects"
 

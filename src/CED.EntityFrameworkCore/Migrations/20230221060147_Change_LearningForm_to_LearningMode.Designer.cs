@@ -4,6 +4,7 @@ using CED.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
@@ -12,9 +13,11 @@ using Volo.Abp.EntityFrameworkCore;
 namespace CED.Migrations
 {
     [DbContext(typeof(CEDDbContext))]
-    partial class CEDDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230221060147_Change_LearningForm_to_LearningMode")]
+    partial class ChangeLearningFormtoLearningMode
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

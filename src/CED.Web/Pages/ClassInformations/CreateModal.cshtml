@@ -3,13 +3,13 @@
 @model CED.Web.Pages.ClassInformations.CreateModalModel
 @using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
 @using Microsoft.Extensions.Localization
-@{
+@section scripts
+    {
+    <abp-script src="/Pages/ClassInformations/Index.js" />
 }
 @inject IStringLocalizer<CEDResource> L
-@{
-    //Layout = null;
-}
-<abp-dynamic-form abp-model="ClassInformation" asp-page="/ClassInformations/CreateModal">
+
+<abp-dynamic-form abp-model="ClassInformation" asp-page="/ClassInformations/CreateModal" onsubmit="return CreateUpdateClassInformationFormSubmited(this);">
     <abp-card>
         <abp-card-header title="@L["NewClass"].Value"></abp-card-header>
         <abp-card-body>

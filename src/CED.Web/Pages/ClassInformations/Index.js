@@ -54,11 +54,17 @@ $(function () {
                 },
                 {
                     title: l('Status'),
-                    data: "status"
+                    data: "status",
+                    render: function (data) {
+                        return l('Enum:Status.' + data);
+                    }
                 },
                 {
-                    title: l('LearningFormality'),
-                    data: "learningFormality"
+                    title: l('LearningMode'),
+                    data: "learningMode",
+                    render: function (data) {
+                        return l('Enum:LearningMode.' + data);
+                    }
                 },
                 {
                     title: l('Fee'),
@@ -70,7 +76,10 @@ $(function () {
                 },
                 {
                     title: l('AcademicLevel'),
-                    data: "academicLevel"
+                    data: "academicLevel",
+                    render: function (data) {
+                        return l('Enum:AcademicLevel.' + data);
+                    }
                 },
                 {
                     title: l('NumberOfStudent'),

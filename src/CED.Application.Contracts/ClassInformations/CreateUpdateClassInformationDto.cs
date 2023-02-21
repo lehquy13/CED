@@ -19,7 +19,7 @@ namespace CED.ClassInformations
 		public Status Status { get; set; } = Status.Waiting;
 
 		[Required]
-		public LearningMode LearningFormality { get; set; } = LearningMode.Offline;
+		public LearningMode LearningMode { get; set; } = LearningMode.Offline;
 
 		[Required]
 		public float Fee { get; set; }

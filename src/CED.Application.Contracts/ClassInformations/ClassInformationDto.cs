@@ -9,7 +9,7 @@ namespace CED.ClassInformations
 		public string Title { get; set; }
 		public string Description { get; set; }
 		public Status Status { get; set; }
-		public LearningMode LearningFormality { get; set; }
+		public LearningMode LearningMode { get; set; }
 
 		public float Fee { get; set; }
 		public float ChargeFee { get; set; }
