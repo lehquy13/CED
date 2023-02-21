@@ -1,10 +1,11 @@
-﻿using System;
+﻿using CED.Subjects;
+using System;
 using System.Collections.Generic;
 using Volo.Abp.Domain.Entities.Auditing;
 
 namespace CED.ClassInformations
 {
-	public class ClassInformation : AuditedAggregateRoot<Guid>
+    public class ClassInformation : AuditedAggregateRoot<Guid>
 	{
 		public string Title { get; set; } 
 		public string Description { get; set; } 

@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using CED.ClassInformations;
 using CED.EntityFrameworkCore;
+using CED.Subjects;
 
 namespace CED.Web.Pages.Subjects
 {

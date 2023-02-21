@@ -1,16 +1,13 @@
 ﻿using CED.Permissions;
+using CED.Subjects;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
 
 namespace CED.ClassInformations
 {
-	public class SubjectAppService :
+    public class SubjectAppService :
 	CrudAppService< //Defines CRUD methods
 		Subject,
 		SubjectDto, //Used to show Subject

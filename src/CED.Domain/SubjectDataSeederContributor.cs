@@ -1,13 +1,14 @@
-﻿using CED.ClassInformations;
+﻿using CED.Subjects;
 using System;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
 
 namespace CED
 {
-	public class SubjectDataSeederContributor
+    public class SubjectDataSeederContributor
 		: IDataSeedContributor, ITransientDependency
 	{
 		private readonly IRepository<Subject, Guid> _subjectRepository;
@@ -22,192 +23,132 @@ namespace CED
 			if (await _subjectRepository.GetCountAsync() <= 0)
 			{
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Maths"
-					},
+					new Subject(Guid.NewGuid(),"Maths"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Programing"
-					},
+                    new Subject(Guid.NewGuid(), "programming"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Psychology"
-					},
+                    new Subject(Guid.NewGuid(), "C# programming"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "English"
-					},
+                    new Subject(Guid.NewGuid(), "Java programming"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Vietnamese"
-					},
+                    new Subject(Guid.NewGuid(), "C/C++ programming"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Korean"
-					},
+                    new Subject(Guid.NewGuid(), "Python programming"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "German"
-					},
+                    new Subject(Guid.NewGuid(), "Android programming"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Russian"
-					},
+                    new Subject(Guid.NewGuid(), "Web programming"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "French"
-					},
+                    new Subject(Guid.NewGuid(), "Psychology"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Mandarin"
-					},
+                    new Subject(Guid.NewGuid(), "English"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Chemistry"
-					},
+                    new Subject(Guid.NewGuid(), "Vietnamese"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Physics"
-					},
+                    new Subject(Guid.NewGuid(), "Korean"),
+					autoSave: true
+				);	
+				await _subjectRepository.InsertAsync(
+                    new Subject(Guid.NewGuid(), "German"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Chemistry"
-					},
+                    new Subject(Guid.NewGuid(), "Russian"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Biology"
-					},
+                    new Subject(Guid.NewGuid(), "French"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Information technology"
-					},
+                    new Subject(Guid.NewGuid(), "Mandarin"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Algebra"
-					},
+                    new Subject(Guid.NewGuid(), "Chemistry"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Geometry"
-					},
+                    new Subject(Guid.NewGuid(), "Physics"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Geography"
-					},
+                    new Subject(Guid.NewGuid(), "Biology"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Literature"
-					},
+                    new Subject(Guid.NewGuid(), "Information technology"),
+					autoSave: true
+				);	
+				await _subjectRepository.InsertAsync(
+                    new Subject(Guid.NewGuid(), "Algebra"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Martial Art"
-					},
+                    new Subject(Guid.NewGuid(), "Geometry"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Guitar"
-					},
+                    new Subject(Guid.NewGuid(), "Geography"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Design"
-					},
+                    new Subject(Guid.NewGuid(), "Literature"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-				new Subject
-				{
-					Name = "Visual Art"
-				},
-				autoSave: true
-				);
-				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Music"
-					},
+                    new Subject(Guid.NewGuid(), "Guitar"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Singing"
-					},
+                    new Subject(Guid.NewGuid(), "Geometry"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Statistic"
-					},
+                    new Subject(Guid.NewGuid(), "Design"),
 					autoSave: true
 				);
 				await _subjectRepository.InsertAsync(
-					new Subject
-					{
-						Name = "Others"
-					},
+                    new Subject(Guid.NewGuid(), "Music"),
+					autoSave: true
+				);
+				await _subjectRepository.InsertAsync(
+                    new Subject(Guid.NewGuid(), "Singing"),
+					autoSave: true
+				);
+				await _subjectRepository.InsertAsync(
+                    new Subject(Guid.NewGuid(), "Statistic"),
+					autoSave: true
+				);
+				await _subjectRepository.InsertAsync(
+                    new Subject(Guid.NewGuid(), "Others"),
+					autoSave: true
+				);
+			
+				await _subjectRepository.InsertAsync(
+                    new Subject(Guid.NewGuid(), "Visual Art"),
 					autoSave: true
 				);
 			}
