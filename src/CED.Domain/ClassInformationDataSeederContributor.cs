@@ -20,6 +20,7 @@ namespace CED
 
             )
         {
+            this._subjectRepository= subjectRepository;
             this._classInformationRepository = classInformationRepository;
         }
 
