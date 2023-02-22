@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CED.ClassInformations;
+using CED.Subjects;
 
 namespace CED;
 
@@ -12,6 +13,7 @@ public class CEDApplicationAutoMapperProfile : Profile
          * into multiple profile classes for a better organization. */
         CreateMap<Subject, SubjectDto>();
         CreateMap<CreateUpdateSubjectDto, Subject>();
+        CreateMap<Subject, SubjectLookupDto>();
 
         CreateMap<AvailableDate, AvailableDateDto>();
         CreateMap<CreateUpdateAvailableDateDto, AvailableDate>();

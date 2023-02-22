@@ -32,7 +32,7 @@ namespace CED.ClassInformations
 		public string Address { get; set; }
 
 		//Subject related information
-		public Subject Subject { get; set; }
+		public Guid SubjectId { get; set; }
 
 	}
 }

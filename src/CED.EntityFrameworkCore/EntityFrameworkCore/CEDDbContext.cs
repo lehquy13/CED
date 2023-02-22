@@ -98,13 +98,18 @@ public class CEDDbContext :
 			b.Property(x => x.Title).IsRequired().HasMaxLength(128).IsUnicode(true);
 			b.Property(x => x.Description).IsRequired().IsUnicode(true);
 			b.Property(x => x.Address).IsRequired().IsUnicode(true); //...
-		});
+
+            // ADD THE MAPPING FOR THE RELATION
+            b.HasOne<Subject>().WithMany().HasForeignKey(x => x.SubjectId).IsRequired();
+        });
 
 		builder.Entity<Subject>(b =>
 		{
 			b.ToTable(CEDConsts.DbTablePrefix + "Subjects", CEDConsts.DbSchema);
 			b.ConfigureByConvention(); //auto configure for the base class props
 			b.Property(x => x.Name).IsRequired().HasMaxLength(128).IsUnicode(true);
+
+			
 		});
 
 		builder.Entity<AvailableDate>(b =>

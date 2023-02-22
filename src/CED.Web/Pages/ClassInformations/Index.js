@@ -97,7 +97,7 @@ $(function () {
                 },
                 {
                     title: l('Subject'),
-                    data: "subject"
+                    data: "subjectName"
                 },
                 //{
                 //    title: l('Type'),

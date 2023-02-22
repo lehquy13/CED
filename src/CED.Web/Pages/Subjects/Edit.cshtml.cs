@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using CED.ClassInformations;
+using CED.Subjects;
 
 namespace CED.Web.Pages.Subjects
 {

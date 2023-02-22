@@ -5,7 +5,7 @@
 namespace CED.Migrations
 {
     /// <inheritdoc />
-    public partial class refinesubjectandavailabledate : Migration
+    public partial class RefineSubjectAndAvailableDate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

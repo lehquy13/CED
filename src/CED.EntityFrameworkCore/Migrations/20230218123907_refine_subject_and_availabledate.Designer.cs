@@ -13,8 +13,8 @@ using Volo.Abp.EntityFrameworkCore;
 namespace CED.Migrations
 {
     [DbContext(typeof(CEDDbContext))]
-    [Migration("20230218123907_refine_subject_and_availabledate")]
-    partial class refinesubjectandavailabledate
+    [Migration("20230218123907_Refine_Subject_And_Availabledate")]
+    partial class RefineSubjectAndAvailableDate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

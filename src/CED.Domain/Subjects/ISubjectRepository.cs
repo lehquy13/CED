@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CED.Subjects
 {
+    // not using right now
     public interface ISubjectRepository
     {
         Task<Subject> FindByNameAsync(string name);

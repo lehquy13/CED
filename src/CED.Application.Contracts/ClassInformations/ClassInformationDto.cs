@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using CED.Subjects;
 using Volo.Abp.Application.Dtos;
 
 namespace CED.ClassInformations
 {
-	public class ClassInformationDto : AuditedEntityDto<Guid>
+    public class ClassInformationDto : AuditedEntityDto<Guid>
 	{
 		public string Title { get; set; }
 		public string Description { get; set; }
@@ -30,7 +31,8 @@ namespace CED.ClassInformations
 		// Address related information
 		public string Address { get; set; }
 
-		//Subject related information
-		public SubjectDto Subject { get; set; }
-	}
+        //Subject related information
+        public Guid SubjectId { get; set; }
+        public string SubjectName { get; set; }
+    }
 }

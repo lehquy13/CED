@@ -51,8 +51,9 @@ namespace CED.ClassInformations
 		[Required]
 		public string Address { get; set; }
 
-		//Subject related information
-		//[Required]
-		//public SubjectDto Subject { get; set; }
-	}
+        //Subject related information
+        //public SubjectDto Subject { get; set; }
+        [Required]
+        public Guid SubjectId { get; set; }
+    }
 }

@@ -8,6 +8,8 @@ using JetBrains.Annotations;
 
 namespace CED.Subjects
 {
+    // not using right now
+
     internal class SubjectManager : DomainService
     {
         private readonly ISubjectRepository _authorRepository;
@@ -30,10 +32,11 @@ namespace CED.Subjects
                 throw new SubjectAlreadyExistsException(name);
             }
 
-            return new Subject(
-                GuidGenerator.Create(),
-                name
-            );
+            //return new Subject(
+            //    GuidGenerator.Create(),
+            //    name
+            //);
+            return new Subject();
         }
 
         public async Task ChangeNameAsync(
@@ -49,7 +52,7 @@ namespace CED.Subjects
                 throw new SubjectAlreadyExistsException(newName);
             }
 
-            subject.ChangeName(newName);
+           // subject.ChangeName(newName);
         }
     }
 }
